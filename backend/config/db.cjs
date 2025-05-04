@@ -1,22 +1,21 @@
 const express = require('express');
-const serverless = require('serverless-http');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const dotenv = require('dotenv');
-
-// Load environment variables
-dotenv.config();
+const authRoutes = require('./routes/auth');
+const connectDB = require('./config/db.cjs');
 
 const app = express();
 
+// Connect to MongoDB
+connectDB();
+
 // Middleware
-app.use(express.json());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true
 }));
+app.use(express.json());
 
 // Session setup
 app.use(session({
@@ -32,14 +31,11 @@ app.use(session({
   }
 }));
 
-// Routes (only auth routes)
-const authRoutes = require('../backend/routes/auth');
+// Routes
 app.use('/api/auth', authRoutes);
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'OK' });
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
-// Export as Netlify Function
-module.exports.handler = serverless(app);
