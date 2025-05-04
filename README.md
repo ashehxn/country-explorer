@@ -13,7 +13,7 @@ A modern, responsive React application for exploring countries, searching and fi
 ## 🚀 Live Demo
 
 **Deployed Application:**  
-[👉 _Add your deployment link here after deploying_ 👈]
+[https://ashehxn-country-explorer-af.netlify.app/]
 
 ## 📦 Technology Stack
 
@@ -30,7 +30,7 @@ A modern, responsive React application for exploring countries, searching and fi
 
 1. **Clone the repository**
 ```
-git clone https://github.com/your-username/country-explorer.git
+git clone https://github.com/ashehxn/country-explorer.git
 cd country-explorer
 ```
 
@@ -147,4 +147,4 @@ src/
 ---
 
 **_Deployed Application:_**  
-[👉 _Add your deployment link here after deploying_ 👈]
+[https://ashehxn-country-explorer-af.netlify.app/]
