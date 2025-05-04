@@ -1,0 +1,14 @@
+[build]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "dist"
+  functions = "functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+  force = true
+
+[functions]
+  external_node_modules = ["express", "mongoose", "connect-mongo"]
+  node_bundler = "esbuild"
